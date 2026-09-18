@@ -29,9 +29,10 @@ services:
       RAILS_MAX_THREADS: ${RAILS_MAX_THREADS:-16}
       OPENPROJECT_COLLABORATIVE__EDITING__HOCUSPOCUS__URL: ""
       OPENPROJECT_HTTPS: "true"
+      OPENPROJECT_SEED_ADMIN_USER_PASSWORD: ${ADMIN_PASSWORD}
 
       # IMAP
-      IMAP_ENABLED: ${IMAP_ENABLED}
+      IMAP_ENABLED: ${IMAP_ENABLED:-flase}
       IMAP_HOST: ${IMAP_HOST}
       IMAP_USERNAME: ${IMAP_USERNAME}
       IMAP_PASSWORD: ${IMAP_PASSWORD}
@@ -72,7 +73,7 @@ services:
       - db
       - cache
       - seeder
-    ports:
+    expose:
       - "8080"
 
     healthcheck:
